@@ -1,0 +1,30 @@
+CREATE DATABASE StudentDB;
+USE StudentDB;
+
+-- Table for student details
+CREATE TABLE Students (
+    StudentID INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(255),
+    Email VARCHAR(255),
+    Phone VARCHAR(15),
+    DOB DATE,
+    Department VARCHAR(100)
+);
+
+-- Table for courses
+CREATE TABLE Courses (
+    CourseID INT AUTO_INCREMENT PRIMARY KEY,
+    CourseName VARCHAR(255),
+    Instructor VARCHAR(255),
+    Credits INT
+);
+
+-- Table for enrollments
+CREATE TABLE Enrollments (
+    EnrollmentID INT AUTO_INCREMENT PRIMARY KEY,
+    StudentID INT,
+    CourseID INT,
+    Grade VARCHAR(2),
+    FOREIGN KEY (StudentID) REFERENCES Students(StudentID),
+    FOREIGN KEY (CourseID) REFERENCES Courses(CourseID)
+);
